@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Hotel Reservas{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 class="main-title">Bienvenido a Hotel Reservas</h1>
+        <nav>
+            <a href="/">Inicio</a> |
+            <a href="#servicios">Servicios</a> |
+            <a href="#galeria">Galería</a> |
+            <a href="#testimonios">Testimonios</a> |
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer style="text-align:center; margin-top:30px;">
+        &copy; 2025 Hotel Reservas. Todos los derechos reservados Ramtako DEV.
+    </footer>
+</body>
+</html>
