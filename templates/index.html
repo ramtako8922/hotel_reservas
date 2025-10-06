@@ -1,43 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>HotelBookingPRO</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Bienvenido a HotelBookingPRO</h1>
-        <nav>
-            <a href="#servicios">Servicios</a> |
-            <a href="#galeria">Galería</a> |
-            <a href="#testimonios">Testimonios</a> |
-            <a href="#contacto">Contacto</a> |
-            <a href="/registro">Registrarse</a>
-        </nav>
-    </header>
-    <section>
-        <div style="text-align:center; margin: 20px;">
-            <a href="/reserva"><button>Reservar ahora</button></a>
-        </div>
-    </section>
-    <section id="servicios">
-        <h2>Servicios</h2>
-        <ul>
-            <li>WiFi gratuito en todas las áreas</li>
-            <li>Piscina al aire libre</li>
-            <li>Desayuno buffet incluido</li>
-            <li>Gimnasio y spa</li>
-            <li>Recepción 24 horas</li>
-        </ul>
-    </section>
-    <section id="galeria">
-        <h2>Galería</h2>
-        <div style="display:flex; gap:10px; justify-content:center;">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Lobby" width="150">
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Habitación" width="150">
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Piscina" width="150">
-        </div>
-    </section>
+{% extends "base.html" %}
+
+{% block title %}HotelBookingPRO{% endblock %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="/static/css/home.css">
+{% endblock %}
+
+{% block content %}
+    <main class="page-home">
+        <section class="home-hero">
+            <div class="hero-inner">
+                <h2 class="hero-title">Bienvenido a HotelBookingPRO</h2>
+                <p class="hero-subtitle">Disfruta de estancias cómodas, servicio de calidad y las mejores instalaciones.</p>
+                <div>
+                    {% if session.get('user_id') %}
+                        <a class="btn btn-primary" href="/reserva">Reservar ahora</a>
+                    {% else %}
+                        <a class="btn btn-secondary" href="/login">Inicia sesión para reservar</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services-section">
+            <h2>Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>WiFi gratis</h3>
+                    <p>Conexión rápida en todas las áreas del hotel.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Piscina</h3>
+                    <p>Piscina al aire libre abierta todo el año.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Desayuno</h3>
+                    <p>Desayuno buffet incluido para comenzar tu día.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Spa & Gimnasio</h3>
+                    <p>Relájate y mantente en forma durante tu estancia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2>Galería</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Lobby">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Habitación">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Piscina">
+            </div>
+        </section>
     <section id="testimonios">
         <h2>Testimonios</h2>
         <blockquote>
@@ -55,8 +69,4 @@
         <p>Teléfono: +34 123 456 789</p>
         <p>Dirección: Calle Principal 123, Ciudad, País</p>
     </section>
-    <footer style="text-align:center; margin-top:30px;">
-        &copy; 2025 Hotel Reservas. Todos los derechos reservados.
-    </footer>
-</body>
-</html>
+{% endblock %}

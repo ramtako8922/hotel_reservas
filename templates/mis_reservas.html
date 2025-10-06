@@ -3,41 +3,39 @@
 {% block title %}Mis Reservas{% endblock %}
 
 {% block content %}
-<section style="max-width:800px; margin:20px auto;">
+{% block extra_styles %}
+    <link rel="stylesheet" href="/static/css/mis_reservas.css">
+{% endblock %}
+
+<section class="mis-reservas-list">
     <h2>Mis Reservas</h2>
     {% if reservas and reservas|length > 0 %}
-        <table style="width:100%; border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Fecha</th>
-                    <th>Habitación</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in reservas %}
-                <tr style="border-top:1px solid #ccc;">
-                    <td>{{ r[0] }}</td>
-                    <td>{{ r[1] }}</td>
-                    <td>{{ r[2] }}</td>
-                    <td>{{ r[3] }}</td>
-                    <td>{{ r[4] }}</td>
-                    <td>
-                        <a href="/reservas/{{ r[0] }}/editar">Editar</a>
-                        <form method="POST" action="/reservas/{{ r[0] }}/eliminar" style="display:inline;">
-                            <button type="submit" onclick="return confirm('¿Eliminar reserva?')">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="mis-reservas-list-items">
+            {% for r in reservas %}
+            <div class="mis-reservas-item">
+                <div class="mis-reservas-meta">
+                    <div class="avatar">#{{ r[0] }}</div>
+                    <div class="info">
+                        <div class="name">{{ r[1] }}</div>
+                        <div class="email">{{ r[2] }}</div>
+                    </div>
+                </div>
+                <div class="mis-reservas-center">
+                    <div class="fecha">Fecha: <strong>{{ r[3] }}</strong></div>
+                    <div class="habitacion">Habitación: <strong>{{ r[4] }}</strong></div>
+                </div>
+                <div class="mis-reservas-actions">
+                    <a href="/reservas/{{ r[0] }}/editar" title="Editar">✏️</a>
+                    <form method="POST" action="/reservas/{{ r[0] }}/eliminar" onsubmit="return confirm('¿Eliminar reserva?');">
+                        <button type="submit" title="Eliminar">🗑️</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     {% else %}
-        <p>No tienes reservas.</p>
+        <p class="no-reservas">No tienes reservas.</p>
     {% endif %}
-    <div style="margin-top:15px;"><a href="/reserva">Crear nueva reserva</a></div>
+    <div class="crear-nueva"><a href="/reserva">Crear nueva reserva</a></div>
 </section>
 {% endblock %}

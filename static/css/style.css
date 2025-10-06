@@ -16,7 +16,7 @@ body {
     padding: 0;
 }
 header {
-    background: #003366;
+    background: #003366 !important;
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -105,6 +105,15 @@ footer {
     padding: 10px 0;
     border-radius: 0 0 8px 8px;
 }
+/* Make main content expand so footer sticks to bottom */
+main.page-body { flex: 1; display: block; }
+
+/* Auth forms common layout */
+.auth-section { max-width: 420px; margin: 24px auto; }
+.auth-section .flashes { margin-bottom:10px; }
+.auth-section label { display:block; margin-top:8px; }
+.auth-section input { width:100%; padding:8px; margin-top:6px; box-sizing:border-box; }
+.auth-section .actions { margin-top:12px; }
 .confirmacion {
     background: #e6ffe6;
     border: 2px solid #4caf50;
@@ -123,4 +132,11 @@ footer {
     color: #388e3c;
     font-size: 1.1em;
     margin-bottom: 20px;
+}
+
+/* Home-specific styles moved to /static/css/home.css */
+
+/* Enlaces visitados en blanco (si prefieres solo en la cabecera usa `nav a:visited`) */
+nav a:visited {
+    color: #ffffff;
 }

@@ -1,0 +1,9 @@
+.mis-reservas-list { max-width:900px; margin:30px auto; padding:10px; }
+.mis-reservas-item { display:flex; align-items:center; justify-content:space-between; padding:12px; border:1px solid #e0e0e0; border-radius:8px; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.02); margin-bottom:12px; }
+.mis-reservas-meta { display:flex; gap:12px; align-items:center; }
+.mis-reservas-meta .avatar { width:48px; height:48px; background:#f0f0f0; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:bold; }
+.mis-reservas-meta .info { line-height:1.1; }
+.mis-reservas-actions { display:flex; gap:8px; }
+.mis-reservas-actions a, .mis-reservas-actions button { padding:8px; border-radius:6px; }
+.mis-reservas-actions a { background:#e8f0fe; color:#1a73e8; text-decoration:none; }
+.mis-reservas-actions button { background:#ffecec; color:#d93025; border:none; cursor:pointer; }

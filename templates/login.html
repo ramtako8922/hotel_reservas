@@ -3,7 +3,7 @@
 {% block title %}Iniciar sesión{% endblock %}
 
 {% block content %}
-<section style="max-width:400px; margin:20px auto;">
+<section class="auth-section">
     <h2>Iniciar sesión</h2>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -21,11 +21,11 @@
         <label>Contraseña:</label>
         <input type="password" name="password" required>
 
-        <div style="margin-top:10px;">
+        <div class="actions">
             <button type="submit">Entrar</button>
         </div>
     </form>
-    <div style="margin-top:10px;">
+    <div class="actions">
         <a href="/registro">Crear una cuenta</a> | <a href="/">Volver al inicio</a>
     </div>
 </section>
