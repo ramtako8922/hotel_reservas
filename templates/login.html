@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<section style="max-width:400px; margin:20px auto;">
+    <h2>Iniciar sesión</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for msg in messages %}
+            <li style="color:red;">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+
+        <div style="margin-top:10px;">
+            <button type="submit">Entrar</button>
+        </div>
+    </form>
+    <div style="margin-top:10px;">
+        <a href="/registro">Crear una cuenta</a> | <a href="/">Volver al inicio</a>
+    </div>
+</section>
+{% endblock %}

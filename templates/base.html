@@ -13,7 +13,12 @@
             <a href="#servicios">Servicios</a> |
             <a href="#galeria">Galería</a> |
             <a href="#testimonios">Testimonios</a> |
-            <a href="#contacto">Contacto</a>
+            <a href="#contacto">Contacto</a> |
+            {% if session.user_id %}
+                Hola, {{ session.user_name }} | <a href="/logout">Cerrar sesión</a>
+            {% else %}
+                <a href="/registro">Registrarse</a> | <a href="/login">Iniciar sesión</a>
+            {% endif %}
         </nav>
     </header>
     {% block content %}{% endblock %}

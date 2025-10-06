@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Reservas{% endblock %}
+
+{% block content %}
+<section style="max-width:800px; margin:20px auto;">
+    <h2>Mis Reservas</h2>
+    {% if reservas and reservas|length > 0 %}
+        <table style="width:100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Fecha</th>
+                    <th>Habitación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reservas %}
+                <tr style="border-top:1px solid #ccc;">
+                    <td>{{ r[0] }}</td>
+                    <td>{{ r[1] }}</td>
+                    <td>{{ r[2] }}</td>
+                    <td>{{ r[3] }}</td>
+                    <td>{{ r[4] }}</td>
+                    <td>
+                        <a href="/reservas/{{ r[0] }}/editar">Editar</a>
+                        <form method="POST" action="/reservas/{{ r[0] }}/eliminar" style="display:inline;">
+                            <button type="submit" onclick="return confirm('¿Eliminar reserva?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No tienes reservas.</p>
+    {% endif %}
+    <div style="margin-top:15px;"><a href="/reserva">Crear nueva reserva</a></div>
+</section>
+{% endblock %}
